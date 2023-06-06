@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-for i in range(1, 98):
+for i in range(1, 88):
     if (i < int(str(i)[::-1])):
         print("{:02d}".format(i), end=', ')
     elif (i < 10):
