@@ -3,7 +3,11 @@ from sys import argv
 
 
 def main():
-    for i in range(1, len(argv)):
+    length = len(argv)
+    print("{:d} arguments.".format(length - 1) if length == 1
+          else "{:d} argument:".format(length - 1) if length == 2
+          else "{:d} arguments:".format(length - 1))
+    for i in range(1, length):
         print("{:d}: {:s}".format(i, argv[i]))
 
 
