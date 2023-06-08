@@ -2,6 +2,7 @@
 
 import os
 
+
 def main():
     os.write(1, b"#pythoniscool\n")
 
