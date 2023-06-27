@@ -22,7 +22,10 @@ class Square:
     @size.setter
     def size(self, value):
         """ sets the size with the value. Also checks for Type and Value errors
-        before setting """
+        before setting
+        Args:
+            value: to be used to set the square
+        """
         if type(value) != int:
             raise TypeError("size must be an integer")
         elif value < 0:
@@ -38,7 +41,8 @@ class Square:
         """ prints in stdout the square with the character # """
         if (self.__size == 0):
             print()
-        for l in range(self.__size):
-            for w in range(self.__size):
-                print("#", end="")
+        else:
+            for l in range(self.__size):
+                for w in range(self.__size):
+                    print("#", end="")
             print()
