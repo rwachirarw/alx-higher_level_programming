@@ -23,7 +23,7 @@ class Square:
     def size(self, value):
         if not isinstance(value, int):
             raise TypeError("size must be an integer")
-        if value < 0:
+        elif value < 0:
             raise ValueError("size must be >= 0")
         self.__size = value
 
@@ -37,7 +37,7 @@ class Square:
 
     def __ne__(self, other):
         """ compares th !="""
-        return not self.__eq__(other)
+        return self.area() != other.area()
 
     def __lt__(self, other):
         """ compares the < """
