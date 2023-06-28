@@ -11,7 +11,6 @@ class Square:
         Args:
             size: size of the square
         """
-        self.__size = 0
         self.size = size
 
     @property
@@ -34,9 +33,7 @@ class Square:
 
     def __eq__(self, other):
         """ compares the =="""
-        if isinstance(other, Square):
-            return self.area() == other.area()
-        return False
+        return self.area() == other.area()
 
     def __ne__(self, other):
         """ compares th !="""
@@ -44,24 +41,16 @@ class Square:
 
     def __lt__(self, other):
         """ compares the < """
-        if isinstance(other, Square):
-            return self.area() < other.area()
-        return False
+        return self.area() < other.area()
 
     def __le__(self, other):
         """compares the <="""
-        if isinstance(other, Square):
-            return self.area() <= other.area()
-        return False
+        return self.area() <= other.area()
 
     def __gt__(self, other):
         """ compares the > """
-        if isinstance(other, Square):
-            return self.area() > other.area()
-        return False
+        return self.area() > other.area()
 
     def __ge__(self, other):
         """ compares the >= """
-        if isinstance(other, Square):
-            return self.area() >= other.area()
-        return False
+        return self.area() >= other.area()
