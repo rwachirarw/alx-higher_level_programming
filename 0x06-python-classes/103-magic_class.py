@@ -8,6 +8,8 @@ import math
 
 
 class MagicClass:
+    """ declaration of MagicClass class """
+
     def __init__(self, radius=0):
         """ initialize instance radius to zero and checks that the radius
         must be a number
