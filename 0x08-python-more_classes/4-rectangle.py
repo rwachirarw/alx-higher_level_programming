@@ -61,4 +61,4 @@ class Rectangle:
 
     def __repr__(self):
         '''Defines a representation of a printable version of an object'''
-        return f'Rectangle({self.__width},{self.__height})'
+        return f'Rectangle({self.__width}, {self.__height})'
