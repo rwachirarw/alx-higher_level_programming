@@ -53,15 +53,15 @@ class Rectangle:
 
     def __str__(self):
         '''Defines the string function'''
-        str = ""
+        strn = ""
         if self.__width == 0 or self.__height == 0:
-            return str
+            return strn
         for h in range(self.__height):
             for w in range(self.__width):
-                str += "#"
+                strn += str(self.print_symbol)
             if h < self.__height - 1:
-                str += "\n"
-        return str
+                strn += "\n"
+        return strn
 
     def __repr__(self):
         '''Defines a representation of a printable version of an object'''
