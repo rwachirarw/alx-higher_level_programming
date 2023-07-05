@@ -10,8 +10,8 @@ Raises:
 
 
 class LockedClass:
-    __slots__ = ['first_name']
     '''Class definition'''
+    __slots__ = ['first_name']
 
     def __init__(self):
         '''Initializes instance of a class'''
