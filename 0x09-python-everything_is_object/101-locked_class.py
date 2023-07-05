@@ -16,10 +16,3 @@ class LockedClass:
     def __init__(self):
         '''Initializes instance of a class'''
         self.first_name = None
-
-    def __setattr__(self, name, value):
-        '''Sets atrributes for the instance'''
-        if name != 'first_name':
-            raise AttributeError("'LockedClass' object has \
-                                 no attribute '" + name + "'")
-        super().__setattr__(name, value)
