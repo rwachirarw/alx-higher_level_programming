@@ -62,7 +62,7 @@ class Rectangle(BaseGeometry):
         Returns:
             str: a string defining  the class Rectangle
         """
-        return '[{}] {}/{}'.format(self.__class__.__name__,
+        return '[{}] {}/{}'.format(Rectangle.__name__,
                                    self.__width, self.__height)
 
     def area(self):
@@ -95,3 +95,13 @@ class Square(Rectangle):
             int: the result of a square
         """
         return self.__size * self.__size
+
+    # def __str__(self):
+    #     """
+    #     define a string
+
+    #     Returns:
+    #         str: a string defining  the class Rectangle
+    #     """
+    #     return '[{}] {}/{}'.format(self.__class__.__name__,
+    #                                self.__size, self.__size)
