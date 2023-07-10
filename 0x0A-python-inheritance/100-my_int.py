@@ -3,6 +3,7 @@
 MyInt class
 """
 
+
 class MyInt(int):
     """
     Return inverted definations for __eq__ and __ne__
