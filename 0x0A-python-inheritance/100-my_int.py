@@ -21,7 +21,7 @@ class MyInt(int):
             int: equality
         """
         return super().__ne__(other)
-    
+
     def __ne__(self, other):
         """
         defines not equal
