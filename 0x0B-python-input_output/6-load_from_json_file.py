@@ -15,5 +15,5 @@ def load_from_json_file(filename):
     Returns:
         obj: python object
     """
-    with open(filename, "r", encoding="utf-8") as object_file:
+    with open(filename, encoding="utf-8") as object_file:
         return json.load(filename)
