@@ -1,1 +1,12 @@
->>> __import__('0-add_integer').add_integer
+>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+>>> bg = BaseGeometry()
+>>> bg.integer_validator("Number", 2)
+>>> bg.integer_validator("char", '2')
+Traceback (most recent call last):
+...
+TypeError: char must be an integer
+
+>>> bg.integer_validator("LessZero", -1)
+Traceback (most recent call last):
+...
+ValueError: LessZero must be greater than 0
