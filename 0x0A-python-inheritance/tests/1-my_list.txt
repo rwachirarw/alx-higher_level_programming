@@ -21,3 +21,18 @@ Test for negative integers
 
 >>> my_list2.print_sorted()
 [-5, -4, -3, -2, -1]
+
+Test for list methods
+>>> my_list3 = MyList()
+>>> my_list3.append(1)
+>>> my_list3.append(2)
+>>> my_list3.append(5)
+>>> my_list3.append(5)
+>>> print(my_list3)
+[1, 2, 5, 5]
+
+>>> my_list3.pop()
+5
+
+>>> my_list3.count(5)
+1
