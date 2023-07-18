@@ -163,7 +163,7 @@ class Rectangle(Base):
             **kwargs: Arbitrary keyword arguments
         """
         if args:
-            attrs = ["id", "size", "x", "y"]
+            attrs = ["id", "width", "height", "x", "y"]
             for attr, value in zip(attrs, args):
                 setattr(self, attr, value)
         elif kwargs:
