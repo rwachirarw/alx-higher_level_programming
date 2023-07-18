@@ -108,47 +108,41 @@ class Base:
 
     @classmethod
     def save_to_file_csv(cls, list_objs):
-        """Serializes list_objs in CSV format and saves it to a file.
+        """Serializes list_objs in CSV format
+        and saves it to a file.
 
         Args:
-            - list_objs: list of instances
+            list_objs (list): List of instances to be serialized
         """
-
-        if (
-            type(list_objs) != list
-            or (list_objs is not None and not
-                all(isinstance(x, cls) for x in list_objs))
-        ):
+        if not isinstance(list_objs, list) and list_objs is not None:
             raise TypeError("list_objs must be a list of instances")
 
-        filename = cls.__name__ + ".csv"
-        with open(filename, 'w', newline='') as f:
-            writer = csv.writer(f)
+        filename = f"{cls.__name__}.csv"
+        with open(filename, "w", newline="") as file:
+            writer = csv.writer(file)
             if list_objs is not None:
-                if cls.__name__ == 'Rectangle':
-                    fields = ['id', 'width', 'height', 'x', 'y']
-                elif cls.__name__ == 'Square':
-                    fields = ['id', 'size', 'x', 'y']
-                writer.writerow(fields)
+                writer.writerow(list_objs[0].to_dictionary().keys())
                 for obj in list_objs:
-                    row = [getattr(obj, field) for field in fields]
-                    writer.writerow(row)
+                    writer.writerow(obj.to_dictionary().values())
 
     @classmethod
     def load_from_file_csv(cls):
         """Deserializes CSV format from a file.
 
-        Returns: list of instances
+        Returns:
+            list: List of instances
         """
-
-        filename = cls.__name__ + ".csv"
+        filename = f"{cls.__name__}.csv"
         instances = []
         if os.path.exists(filename):
-            with open(filename, 'r') as f:
-                reader = csv.reader(f)
+            with open(filename, "r", newline="") as file:
+                reader = csv.reader(file)
                 fields = next(reader)
                 for row in reader:
-                    instance = cls.create(**dict(zip(fields, row)))
+                    instance_dict = dict(zip(fields, row))
+                    instance = cls(1, 1)  # Create a temporary instance
+                    for attr, value in instance_dict.items():
+                        setattr(instance, attr, int(value))
                     instances.append(instance)
         return instances
 
