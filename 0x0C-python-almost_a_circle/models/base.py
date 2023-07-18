@@ -3,6 +3,7 @@
 Base class
 """
 import json
+import csv
 
 
 class Base:
@@ -102,3 +103,77 @@ class Base:
         list_dicts = cls.from_json_string(json_str)
         instances = [cls.create(**dictionary) for dictionary in list_dicts]
         return instances
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """Serialize instances to a CSV file
+
+        Args:
+            list_objs (list): List of instances
+
+        Returns:
+            None
+        """
+        filename = cls.__name__ + ".csv"
+        fieldnames = cls.get_csv_fieldnames()
+
+        with open(filename, "w", newline="") as file:
+            writer = csv.DictWriter(file, fieldnames=fieldnames)
+            writer.writeheader()
+            for obj in list_objs:
+                writer.writerow(obj.to_csv_row())
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """Deserialize instances from a CSV file
+
+        Returns:
+            list: List of instances deserialized from the CSV file
+        """
+        filename = cls.__name__ + ".csv"
+        instances = []
+
+        with open(filename, "r", newline="") as file:
+            reader = csv.DictReader(file)
+            for row in reader:
+                instance = cls.create(**cls.from_csv_row(row))
+                instances.append(instance)
+
+        return instances
+
+    def to_dictionary(self):
+        """Return the dictionary representation of the instance
+
+        Returns:
+            dict: Dictionary representation of the instance
+        """
+        raise NotImplementedError
+
+    def to_csv_row(self):
+        """Return the CSV row representation of the instance
+
+        Returns:
+            dict: Dictionary representing a row in the CSV file
+        """
+        raise NotImplementedError
+
+    @classmethod
+    def get_csv_fieldnames(cls):
+        """Return the fieldnames for the CSV file
+
+        Returns:
+            list: List of fieldnames
+        """
+        raise NotImplementedError
+
+    @classmethod
+    def from_csv_row(cls, csv_row):
+        """Create and return a dictionary from a CSV row
+
+        Args:
+            csv_row (dict): Dictionary representing a row in the CSV file
+
+        Returns:
+            dict: Dictionary containing attribute values
+        """
+        raise NotImplementedError
